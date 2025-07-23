@@ -19,11 +19,10 @@ cp .env.example .env
 # edit .env and set NEWS_API_KEY
 ```
 
-Run the FastAPI backend and Dash frontend:
+Run the combined FastAPI and Dash server:
 
 ```bash
-uvicorn stock_data:app --reload &
-python dashboard.py
+uvicorn stock_data:app --reload
 ```
 
-Open [http://localhost:8050](http://localhost:8050) to view the dashboard.
+Open [http://localhost:8000/dashboard](http://localhost:8000/dashboard) to view the dashboard.
