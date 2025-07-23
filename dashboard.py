@@ -4,10 +4,10 @@ from dash.dependencies import Input, Output, State
 import pandas as pd
 import requests
 
-app = dash.Dash(__name__)
-server = app.server
+dash_app = dash.Dash(__name__)
+server = dash_app.server
 
-app.layout = html.Div([
+dash_app.layout = html.Div([
     html.H2("Stock Dashboard"),
     dcc.Dropdown(
         id="ticker",
@@ -31,7 +31,7 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(
+@dash_app.callback(
     Output("price-chart", "figure"),
     Input("ticker", "value"),
     Input("range", "value")
@@ -67,7 +67,7 @@ def update_chart(ticker, period):
     return fig
 
 
-@app.callback(
+@dash_app.callback(
     Output("news-output", "children"),
     Input("search-news-btn", "n_clicks"),
     State("price-chart", "relayoutData"),
@@ -98,4 +98,4 @@ def search_news(n_clicks, relayout_data, ticker):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    dash_app.run_server(debug=True)
